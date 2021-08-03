@@ -1,0 +1,49 @@
+#navbar {
+  margin: 1% 10%;
+  border: solid black 2px;
+  padding: 1%;
+
+  border-radius: 20px;
+}
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#options {
+  display: flex;
+  gap: 10px;
+}
+#suggetion {
+  max-height: 100px;
+  max-width: 172px;
+  /* border: red solid 2px; */
+  overflow-y: scroll;
+}
+
+#options div button a {
+  text-decoration: none;
+  color: black;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+  color: grey;
+}
+
+#cont {
+  margin-top: 100px;
+  border: black solid 2px;
+  margin-left: 15%;
+  margin-right: 15%;
+  padding: 15px;
+}
+
+#wrap {
+  display: grid;
+  grid-template-columns: repeat(1, 90%);
+  grid-gap: 5%;
+  padding: 5%;
+}
+.block {
+  max-height: 150px;
+  /* overflow-y: scroll; */
+}

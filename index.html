@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body></body>
+</html>
+<script type="module">
+  import navbar from "./components/navbar.js";
+  document.body.innerHTML = navbar();
+</script>
+<script>
+  async function suggetions() {
+    let sdiv = document.getElementById("suggetion");
+    let inp = document.getElementById("inp").value;
+
+    let response = await fetch(
+      `http://www.themealdb.com/api/json/v1/1/search.php?s=${inp}`
+    );
+
+    let data = await response.json();
+    data.meals.forEach(({ strMeal }) => {
+      let p = document.createElement("p");
+      p.innerText = strMeal;
+      sdiv.append(p);
+    });
+  }
+
+  function go() {
+    let main_div = document.getElementById("cont");
+    main_div.setAttribute("id", "wrap");
+    let input = document.getElementById("inp").value;
+    let res = fetch(
+      `http://www.themealdb.com/api/json/v1/1/search.php?s=${input}`
+    )
+      .then((res) => {
+        return res.json();
+      })
+      .then((res) => {
+        let div = document.createElement("div");
+        div.setAttribute("class", "block");
+        let obj = res.meals[0];
+        console.log(obj);
+        for (let k in obj) {
+          let p = document.createElement("p");
+          p.innerText = `${k} : ${obj[k]}`;
+          div.append(p);
+        }
+        main_div.append(div);
+        console.log(main_div);
+      });
+  }
+</script>
