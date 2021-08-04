@@ -13,19 +13,15 @@
   import navbar from "./components/navbar.js";
   document.body.innerHTML = navbar();
 
-  //   async function suggetions() {
-  //     let sdiv = document.getElementById("suggetion");
-  //     let inp = document.getElementById("inp").value;
+  import { showRecipe } from "./scripts/showrecipe.js";
 
-  //     let response = await fetch(
-  //       `http://www.themealdb.com/api/json/v1/1/search.php?s=${inp}`
-  //     );
-
-  //     let data = await response.json();
-  //     data.meals.forEach(({ strMeal }) => {
-  //       let p = document.createElement("p");
-  //       p.innerText = strMeal;
-  //       sdiv.append(p);
-  //     });
-  //   }
+  let mealdatares = await showRecipe();
+  let mealdata = mealdatares.meals[0];
+  console.log(mealdata);
+  let cont = document.getElementById("cont");
+  for (let k in mealdata) {
+    let p = document.createElement("p");
+    p.innerText = `${k} : ${mealdata[k]}`;
+    cont.append(p);
+  }
 </script>
